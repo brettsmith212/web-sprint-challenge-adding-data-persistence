@@ -12,8 +12,10 @@ async function getResourceById(resource_id) {
 
 async function addResource(resource) {
   const newResourceId = await db("resources").insert(resource);
-  const newResource = await getResourceById(newResourceId);
-  return newResource;
+  const [newResource] = await getResourceById(newResourceId);
+  return {
+    resource_name: newResource.resource_name,
+  };
 }
 
 module.exports = {

@@ -3,7 +3,7 @@ exports.up = function (knex) {
     .createTable("projects", (tbl) => {
       tbl.increments("project_id");
       tbl.string("project_name").notNullable();
-      tbl.string("project_description").notNullable();
+      tbl.string("project_description");
       tbl.integer("project_completed").defaultTo(0);
     })
     .createTable("resources", (tbl) => {
@@ -41,7 +41,7 @@ exports.up = function (knex) {
 };
 
 exports.down = function (knex) {
-  return knex.scheme
+  return knex.schema
     .dropTableIfExists("project_resources")
     .dropTableIfExists("tasks")
     .dropTableIfExists("resources")
