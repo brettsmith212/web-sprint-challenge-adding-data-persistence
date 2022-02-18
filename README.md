@@ -69,20 +69,25 @@ Build the migration(s) in Knex inside the `data/migrations` folder using appropr
 Build an API inside the `api` folder with endpoints for:
 
 - [ ] `[POST] /api/resources`
+
   - Example of response body: `{"resource_id":1,"resource_name":"foo","resource_description":null}`
 
 - [ ] `[GET] /api/resources`
+
   - Example of response body: `[{"resource_id":1,"resource_name":"foo","resource_description":null}]`
 
 - [ ] `[POST] /api/projects`
+
   - Even though `project_completed` is stored as an integer, the API uses booleans when interacting with the client
   - Example of response body: `{"project_id":1,"project_name":"bar","project_description":null,"project_completed":false}`
 
 - [ ] `[GET] /api/projects`
+
   - Even though `project_completed` is stored as an integer, the API uses booleans when interacting with the client
   - Example of response body: `[{"project_id":1,"project_name":"bar","project_description":null,"project_completed":false}]`
 
 - [ ] `[POST] /api/tasks`
+
   - Even though `task_completed` is stored as an integer, the API uses booleans when interacting with the client
   - Example of response body: `{"task_id":1,"task_description":"baz","task_notes":null,"task_completed":false,"project_id:1}`
 
@@ -111,6 +116,17 @@ Build an API inside the `api` folder with endpoints for:
 Be prepared to demonstrate your understanding of this week's concepts by answering questions on the following topics. You might prepare by writing down your own answers before hand.
 
 1. Explain the difference between Relational Databases and SQL.
+
+SQL databases are known as relational databases. They have a table based structure that can be queried using SQL. SQL is the language used for dealing with relational databases. There are non-relational databases management systems that do not have a fixed schema (like RDBMS does) and does not use SSQL syntax to store and retrieve data.
+
 2. Why do tables need a Primary Key?
+
+Tables must have primary keys to provide unique values to each row. This enables better queries and helps normalize the data. They also allow tables to merge together by using the primary keys of other tables as the foreign key of your current table.
+
 3. What is the name given to a table column that references the Primary Key on another table?
+
+Foreign Key
+
 4. What do we need in order to have a _many to many_ relationship between two tables?
+
+To have a many to many relationship between two tables there needs to be multiple primary keys that match to multiple primary keys of the opposite tables. An example is students and classes. A student can be taking multiple classes and a class can have multiple students. This means that there will be overlap between the PK of Students and the PK of Classes.
