@@ -1,14 +1,25 @@
 // build your `/api/projects` router here
 const express = require("express");
+const { getProjects, addProject } = require("./model");
 
 const router = express.Router();
 
-router.get("/", (req, res) => {
-  res.json({ message: "connected" });
+router.get("/", async (req, res) => {
+  try {
+    const projects = await getProjects();
+    res.status(200).json(projects);
+  } catch (e) {
+    res.status(500).json({ message: "error getting projects" });
+  }
 });
 
-router.post("/", (req, res) => {
-  res.json({ message: "connected" });
+router.post("/", async (req, res) => {
+  try {
+    const newProject = await addProject(req.body);
+    res.status(201).json(newProject);
+  } catch (e) {
+    res.status(500).json({ message: "error adding project" });
+  }
 });
 
 module.exports = router;
